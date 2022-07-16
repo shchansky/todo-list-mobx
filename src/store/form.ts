@@ -1,7 +1,7 @@
 import { makeAutoObservable } from "mobx";
 
 class Form {
-  private _value: string = "AZAZAZA";
+  private _value: string = "";
 
   constructor() {
     makeAutoObservable(this);
@@ -16,4 +16,4 @@ class Form {
   }
 }
 
-export const fromState= new Form()
+export const formState = new Form();
