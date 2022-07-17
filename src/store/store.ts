@@ -1,4 +1,3 @@
-import React from "react";
 import * as Units from "./units";
 
 export class StateManager {

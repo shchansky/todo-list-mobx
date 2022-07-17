@@ -1,17 +1,11 @@
-
-
-
 import React from "react";
 import { observer } from "mobx-react-lite";
-// import { formState, todosState } from "../../store";
-
 import { useStoreContext } from "../../store";
 
-export const Form = observer(() => {
+export const TodoList = observer(() => {
+  const storeContext = useStoreContext();
 
-   const storeContext = useStoreContext();
-
-if(!storeContext) return null
+  if (!storeContext) return null;
 
   return (
     <div>

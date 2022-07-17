@@ -3,7 +3,6 @@ import { StoreContext } from "./store-context";
 import { StateManager } from "./store-state-manager";
 
 const Wrapper: React.FC<{}> = ({ children }) => {
-  // const [appStateContext, setAppStateContext] = useState<Nullable<AppStateManager>>(null);
   const [appStateContext, setAppStateContext] =
     React.useState<StateManager | null>(null);
 
