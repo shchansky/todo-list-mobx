@@ -7,7 +7,12 @@ export const Form = observer(() => {
     <div>
       <div>
         {todosState.todos.map((item) => (
-          <div key={item.uid}>{item.value}</div>
+          <>
+            <div key={item.uid}>{item.value}</div>
+            <button onClick={() => todosState.delTodo(item.uid)}>
+              delTodo
+            </button>
+          </>
         ))}
       </div>
       <textarea

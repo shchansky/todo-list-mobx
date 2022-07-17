@@ -8,7 +8,9 @@ type Item = {
 };
 
 class Todos {
-  private _todos: Item[] = [{ value: "initialValue", uid: v4(), isActive: true }];
+  private _todos: Item[] = [
+    { value: "initialValue", uid: v4(), isActive: true },
+  ];
 
   constructor() {
     makeAutoObservable(this);
@@ -19,14 +21,12 @@ class Todos {
   }
 
   public setTodo(value: string) {
-    // this._todos = this._todos.push({ value, uid: v4(), isActive: true });
-    //  this._todos.push({ value, uid: v4(), isActive: true });
     this._todos = [...this._todos, { value, uid: v4(), isActive: true }];
   }
 
-  //   public delTodo(uid: string|number) {
-  //     this._todos= this._todos.filter (item=> item.);
-  //   }
+  public delTodo(uid: string | number) {
+    this._todos = this._todos.filter((item) => item.uid !== uid);
+  }
 }
 
 export const todosState = new Todos();
