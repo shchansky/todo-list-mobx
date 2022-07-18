@@ -1,17 +1,15 @@
 import React from "react";
 import { observer } from "mobx-react-lite";
 import { useStoreContext } from "../../store";
-import * as hooks from "./todo-list.hooks"
+import * as Units from "./units";
+import * as hooks from "./todo-list.hooks";
 
 const enterKey = "Enter";
 
 export const TodoList = observer(() => {
   const storeContext = useStoreContext();
 
-
-
   if (!storeContext) return null;
-
 
   return (
     <div>
@@ -25,28 +23,31 @@ export const TodoList = observer(() => {
           </>
         ))}
       </div>
-      <textarea
-        value={storeContext.formState.value}
-        onChange={(ev) => {
-          storeContext.formState.setValue(ev.target.value);
-        }}
-        onKeyDown={(ev) => {
-          if (ev.key !== enterKey) return;
-          storeContext.todosState.setTodo(storeContext.formState.value);
-          storeContext.formState.setValue("");
-        }}
-      />
-      <button
-        onClick={() => {
-          storeContext.todosState.setTodo(storeContext.formState.value);
-          storeContext.formState.setValue("");
-        }}
-      >
-        setTodo
-      </button>
-      <button>Clear</button>
+
+      <>
+        {/* <textarea
+          value={storeContext.formState.value}
+          onChange={(ev) => {
+            storeContext.formState.setValue(ev.target.value);
+          }}
+          onKeyDown={(ev) => {
+            if (ev.key !== enterKey) return;
+            storeContext.todosState.setTodo(storeContext.formState.value);
+            storeContext.formState.setValue("");
+          }}
+        />
+        <button
+          onClick={() => {
+            storeContext.todosState.setTodo(storeContext.formState.value);
+            storeContext.formState.setValue("");
+          }}
+        >
+          setTodo
+        </button>
+        <button>Clear</button> */}
+      </>
+
+      <Units.Form storeContext={storeContext} />
     </div>
   );
 });
-
-
