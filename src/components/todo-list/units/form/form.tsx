@@ -6,54 +6,18 @@ import type { Props } from "./form.types";
 export const Form = observer((props: Props) => {
   const { storeContext } = props;
 
-  const { handleSetTodo, handleSetValue, handlePressEnter } =
+  const { handleSetTodo, handleSetValue, handlePressEnter, handleClear } =
     hooks.useHandlers(storeContext);
 
-  const enterKey = "Enter";
-
   return (
-    // <div>
-    //   <textarea
-    //     value={storeContext.formState.value}
-    //     onChange={(ev) => {
-    //       storeContext.formState.setValue(ev.target.value);
-    //     }}
-    //     onKeyDown={(ev) => {
-    //       if (ev.key !== enterKey) return;
-    //       storeContext.todosState.setTodo(storeContext.formState.value);
-    //       storeContext.formState.setValue("");
-    //     }}
-    //   />
-    //   <button
-    //     onClick={() => {
-    //       storeContext.todosState.setTodo(storeContext.formState.value);
-    //       storeContext.formState.setValue("");
-    //     }}
-    //   >
-    //     setTodo
-    //   </button>
-    //   <button>Clear</button>
-    // </div>
-
     <div>
       <textarea
         value={storeContext.formState.value}
         onChange={handleSetValue}
-        onKeyDown={(ev) => {
-          if (ev.key !== enterKey) return;
-          storeContext.todosState.setTodo(storeContext.formState.value);
-          storeContext.formState.setValue("");
-        }}
+        onKeyDown={handlePressEnter}
       />
-      <button
-        onClick={() => {
-          storeContext.todosState.setTodo(storeContext.formState.value);
-          storeContext.formState.setValue("");
-        }}
-      >
-        setTodo
-      </button>
-      <button>Clear</button>
+      <button onClick={handleSetTodo}>setTodo</button>
+      <button onClick={handleClear}>Clear</button>
     </div>
   );
 });

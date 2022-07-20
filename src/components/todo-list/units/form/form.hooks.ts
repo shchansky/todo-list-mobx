@@ -7,18 +7,9 @@ export const useHandlers = (storeContext: NonNullable<IStoreContext>) => {
   const setValue = storeContext.formState.setValue;
   const setTodo = storeContext.todosState.setTodo;
 
-
-
-
-  const handleSetValue = React.useCallback(
-    (ev: React.ChangeEvent<HTMLTextAreaElement>) => {
-      console.log(ev.target.value)
-      setValue(ev.target.value);
-    },
-    [setValue]
-  );
-
-
+  const handleSetValue = React.useCallback((ev: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setValue(ev.target.value);
+  },[setValue])
 
   const handleSetTodo = React.useCallback(() => {
     setTodo(value);
@@ -34,5 +25,9 @@ export const useHandlers = (storeContext: NonNullable<IStoreContext>) => {
     [setValue, setTodo, value]
   );
 
-  return { handleSetTodo, handleSetValue, handlePressEnter };
+  const handleClear = React.useCallback(() => {
+    setValue("");
+  }, [setValue]);
+
+  return { handleSetTodo, handleSetValue, handlePressEnter, handleClear };
 };

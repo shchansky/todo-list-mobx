@@ -13,7 +13,9 @@ export class Todos {
   ];
 
   constructor() {
-    makeAutoObservable(this);
+    makeAutoObservable(this, {}, { deep: true });
+    this.setTodo = this.setTodo.bind(this);
+    this.delTodo = this.delTodo.bind(this);
   }
 
   public get todos() {

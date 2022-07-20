@@ -4,7 +4,8 @@ export class Form {
   private _value: string = "";
 
   constructor() {
-    makeAutoObservable(this);
+    makeAutoObservable(this, {}, {deep:true});
+    this.setValue= this.setValue.bind(this)
   }
 
   public get value() {
