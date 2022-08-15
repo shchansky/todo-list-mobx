@@ -22,6 +22,7 @@ export class Todos {
     return this._todos;
   }
 
+  
   public setTodo(value: string) {
     if (value.length === 0) return;
     this._todos = [...this._todos, { value, uid: v4(), isActive: true }];
