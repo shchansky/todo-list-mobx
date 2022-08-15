@@ -18,7 +18,7 @@ export const TodoList = observer(() => {
         {storeContext.todosState.todos.map((item) => (
           <div key={item.uid}>
             <div>{item.value}</div>
-            <button onClick={handleDelTodo(item.uid)}>delTodo</button>
+            <button onClick={handleDelTodo(item.uid)}>deleteTodo</button>
           </div>
         ))}
       </div>
